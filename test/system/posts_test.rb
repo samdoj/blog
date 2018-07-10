@@ -17,6 +17,7 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Article", with: @post.article
     fill_in "Category", with: @post.category
     fill_in "Image Url", with: @post.image_url
+    fill_in "Preview", with: @post.preview
     fill_in "Title", with: @post.title
     click_on "Create Post"
 
@@ -31,6 +32,7 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Article", with: @post.article
     fill_in "Category", with: @post.category
     fill_in "Image Url", with: @post.image_url
+    fill_in "Preview", with: @post.preview
     fill_in "Title", with: @post.title
     click_on "Update Post"
 
