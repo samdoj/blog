@@ -1,0 +1,85 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper
+{
+  width: 90vw;
+  height: 100vh;
+  display: grid;
+  grid-row-gap: 1vh;
+  grid-column-gap: 1vw;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+}
+.posts
+{
+  display: grid;
+  grid-column: auto;
+  width: 1fr;
+  height: 1fr;
+  justify-items: center;
+
+  grid-template-rows: repeat(30,20px);
+
+  .category
+  {
+    display: grid;
+    justify-items: center;
+    grid-row: auto;
+  }
+  .title
+
+  { display: grid;
+    //justify-items: center;
+    text-align: center;
+    grid-row:auto;
+    font-weight: bolder;
+    font-size: 1.5em;
+  }
+
+  .list_image
+  {
+    display: grid;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    grid-row: 4/14;
+    height:200px;
+    width:200px;
+    object-fit: cover;
+
+
+
+  }
+  .article
+  {
+    display: grid;
+    justify-items: center;
+    grid-row: 15/26;
+    background-color: lightgrey;
+    width: 200px;
+    height:200px;
+    overflow-x: scroll;
+  }
+
+  .article ::before {
+
+    content: "";
+    width: 200px;
+    height: 1vh;
+
+  }
+
+}
+.links-area
+   {
+     display: inline;
+  grid-row: 26;
+  td
+  {
+    display: inline;
+  }
+
+   }

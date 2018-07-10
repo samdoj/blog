@@ -1,0 +1,7 @@
+<h1>Goodbye</h1>
+<p>It was nice having you here!</p>
+<p>Say <%= link_to 'Hello', say_hello_path	  %></p>
+<% @files = Dir.glob('*.*');  %>
+<% @files.each_with_index {|file, n|   @style = "background-color: rgba(200,20,20,"+ (5*n / 100.0+0.3).to_s + ");" %>
+<div style='<%=@style%>'> <%=file%></div>
+<%}%>

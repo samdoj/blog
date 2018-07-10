@@ -1,0 +1,23 @@
+<body class = '<%= controller.controller_name %>'>
+  <p id="notice"><%= notice %></p>
+<div class = 'wrapper'>
+
+    <% @posts.each do |post| %>
+
+        <div class = "posts">
+          <div class = "category"><%= post.category %></div>
+        <div class="title"><%= post.title %></div>
+        <main class = "article"><%= post.article.html_safe %></main>
+      <img class="list_image" src="<%= post.image_url.html_safe %>"/>
+          <div class = "links-area">
+            <td><%= link_to 'New Post', new_post_path %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+
+</div>
+
+  <% end %>
+</div>
+</body>
