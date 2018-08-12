@@ -1,0 +1,33 @@
+<body class = '<%= controller.controller_name %>'>
+<p id="notice"><%= notice %></p>
+<h1>FILTERED</h1><%#@posts= @posts.all.where category: 'CSS Tricks'%>
+<div class = 'wrapper'>
+
+  <% @posts.each do |post| %>
+
+      <div class = "posts">
+        <div class = "category"><%= post.category %></div>
+        <div class="title"><%= post.title %></div>
+        <%
+          @article = post.article;
+          @len = strip_tags(post.article).length %>
+        <main class = "article"><%= post.preview.empty? ?
+
+                                        @article.truncate(@article.length-@len+215).html_safe : post.preview.html_safe %>
+          <!--<script>if (<%= @len %>500) alert('<%= @len%>')</script>-->
+          <%= button_tag "Read more", :type => 'submit', :class => "more_button", :onclick => "location.href = '#{post_path(post)}'" %>
+
+        </main>
+
+        <img class="list_image" src="<%= post.image_url.html_safe %>"/>
+        <div class = "links-area">
+          <td><%= link_to 'New Post', id: post.id %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+
+      </div>
+
+  <% end %>
+</div>
+</body>

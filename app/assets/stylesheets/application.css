@@ -12,4 +12,18 @@
  *
  *= require_tree .
  *= require_self
+
  */
+html
+{
+
+    background-color: var(--bgColor);
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    color: white;
+
+}
+a {
+    text-decoration: none;
+}

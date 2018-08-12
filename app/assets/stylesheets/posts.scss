@@ -1,100 +1,145 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.wrapper
-{
-  width: 90vw;
-  height: 100vh;
-  display: grid;
-  grid-row-gap: 1vh;
-  grid-column-gap: 1vw;
-  justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+html {
+  /*--bgColor: #9cb8ee;*/
+  --bgColor: #4341ff;
+  --text-block-color: #0088ff;
+  --hover-color: #3f00eb;
+  --text-color: #f3fdff;
+  --border-color: #eed7cf;
+  --menu-shadow: white;
+  --menu-bar-background: #0088ff;
+  background-color: var(--bgColor);
+  width: 100vw;
+  overflow-x: hidden;
+  text-decoration: none;
 
 }
-.posts
-{
-  display: grid;
-  grid-column: auto;
-  width: 1fr;
-  height: 1fr;
-  justify-items: center;
 
-  grid-template-rows: repeat(30,20px);
+body {
 
-  .category
-  {
+  background-color: transparent;
+  color: white;
+}
+
+.posts-index {
+  .wrapper {
+    width: 100vw;
     display: grid;
+    position: absolute;
+    left: 0;
+    grid-row-gap: 1vh;
+    grid-column-gap: 1vw;
     justify-items: center;
-    grid-row: auto;
-  }
-  .title
-
-  { display: grid;
-    //justify-items: center;
-    text-align: center;
-    grid-row:auto;
-    font-weight: bolder;
-    font-size: 1.5em;
-  }
-
-  .list_image
-  {
-    display: grid;
-    justify-content: center;
-    justify-self: center;
-    align-items: center;
-    grid-row: 4/14;
-    height:200px;
-    width:200px;
-    object-fit: cover;
-
-
-
-  }
-  .article
-  {
-    display: grid;
-    justify-items: center;
-    grid-row: 15/26;
-    background-color: lightgrey;
-    width: 200px;
-    height:200px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-all;
-    overflow-y: scroll;
-    border: transparent 1px solid;
-
-  }
-
-  .article ::before {
-
-    content: "";
-    width: 200px;
-    height: 1vh;
-
-  }
-
-  .more_button
-  {
-    width:200px;
-    height:7vh;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    background-color: #3f00eb;
     color: white;
-    background-color: blue;
-    margin-bottom: 0;
-    margin-top: auto;
+    top: 12vh
+
+  }
+
+  .posts {
+    display: grid;
+    grid-column: auto;
+    width: 1fr;
+    height: 1fr;
+    justify-items: center;
+
+    grid-template-rows: repeat(28, 20px);
+
+    .category {
+      display: grid;
+      justify-items: center;
+      grid-row: auto;
+    }
+    .title {
+      display: grid;
+      //justify-items: center;
+      text-align: center;
+      grid-row: auto;
+      font-weight: bolder;
+      font-size: 1.5em;
+    }
+
+    .list_image {
+      display: grid;
+      justify-content: center;
+      justify-self: center;
+      align-items: center;
+      grid-row: 4/14;
+      height: 200px;
+      width: 200px;
+      object-fit: cover;
+      background-color: #0057ff;
+
+    }
+    .article {
+      display: grid;
+      justify-items: center;
+      grid-row: 15/26;
+      background-color: #0057ff;
+      width: 200px;
+      height: 200px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      overflow-y: scroll;
+      border: transparent 1px solid;
+
+    }
+
+    .article ::before {
+
+      content: "";
+      width: 200px;
+      height: 1vh;
+
+    }
+
+    .more_button {
+      width: 200px;
+      height: 7vh;
+      color: white;
+      background-color: blue;
+      margin-bottom: 0;
+      margin-top: auto;
+    }
+  }
+
+  .links-area {
+    display: inline;
+    grid-row: 26;
+    td {
+      display: inline;
+    }
+
+  }
+
+  .categories {
+    height: 2vw;
+    margin: 0 0 0 0;
+    position: absolute;
+    right: 1vw;
+    top: 9vh;
+    color: navajowhite;
+    :before {
+      content: "Filter categories:";
+      margin-right: 1vw;
+    }
+    #category {
+      background-color: seagreen;
+      background-color: navajowhite;
+    }
+    a {
+      color: whitesmoke;
+
+    }
+    a :hover, a :visited a :link {
+      color: ghostwhite;
+    }
+    a :link {
+      color: white;
+    }
   }
 }
-
-.links-area
-   {
-     display: inline;
-  grid-row: 26;
-  td
-  {
-    display: inline;
-  }
-
-   }

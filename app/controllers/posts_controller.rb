@@ -1,14 +1,21 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action  :authorize, :set_post, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+
   end
 
+  def not_found
+    render file: 'public/404', status: 404, formats: [:html]
+
+  end
   # GET /posts/1
   # GET /posts/1.json
+
   def show
   end
 
@@ -42,7 +49,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Post was successfully updated.'}
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -56,19 +63,41 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.'}
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # @return [Object]
+  def set_post
+      categories = ["CSS Tricks", "Things I've learned",  "How I stay sharp", "all"];
+      if params[:id].in?(categories)
+        expandedCategory = '';
+        cat = params[:id]
+
+        case when cat =="csstricks" then expandedCategory='CSS Tricks' end
+        case when cat=="thingsivelearned" then expandedCategory="Things I've learned" end
+        case when cat=="howistaysharp" then expandedCategory="How I stay sharp" end
+
+        @posts = Post.where category: expandedCategory; #raise Exception #if @post != Post.all;
+        render template: 'posts/index', variable: @posts
+        return @posts
+        else
+          @post = Post.find(params[:id])
+      end
+      end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :article, :preview, :category, :image_url)
     end
+
+  protected
+  def authorize
+    unless User.find_by(id: session[:user_id])
+      redirect_to login_url, notice: 'Please log in'
+    end
+  end
 end
